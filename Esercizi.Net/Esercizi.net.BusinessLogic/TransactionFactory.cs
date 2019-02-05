@@ -8,6 +8,8 @@ namespace Esercizi.net.BusinessLogic
 {
 
     public class TransactionFactory : ITransactionFactory
+        //sarebbe stato lo stesso scrivere "public class TransactionFactory : IFactory <ITransazione>"
+        //avrei saltato passaggio passando direttamente da ITransazione a IFactory senza passare da ITransactionFactory
     {
         public ITransazione Create()
         {
