@@ -84,8 +84,25 @@ namespace Esercizi.Net.ConsoleApp
                             Console.Write("Data transazione (MM/gg/aaaa): ");
                             string dtTransazione = Console.ReadLine();
                             nuovaTransazione.DataTransazione = DateTime.Parse(dtTransazione);
-                            Console.Write("Tipo transazione (Spesa/Ricavo): ");
-                            nuovaTransazione.Tipo = Console.ReadLine();
+                            Console.Write("Tipo transazione (" + TipoTransazione.Spesa + "/"+ TipoTransazione.Ricavo + "):") ;
+
+                            //nuovaTransazione.Tipo = Console.ReadLine();
+                            //dopo enum: (scrivo più codice ma faccio controllo di errore alla sorgente)
+                            string tipo = Console.ReadLine();
+                            if (tipo == TipoTransazione.Spesa.ToString())
+                            {
+                                nuovaTransazione.Tipo = TipoTransazione.Spesa;
+                            }
+                            else if (tipo == TipoTransazione.Ricavo.ToString())
+                            {
+                                nuovaTransazione.Tipo = TipoTransazione.Ricavo;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Valore non corretto");
+                            }
+
+
                             Console.Write("Categoria transazione: ");
                             nuovaTransazione.Categoria = Console.ReadLine();
                             Console.Write("Descrizione transazione: ");

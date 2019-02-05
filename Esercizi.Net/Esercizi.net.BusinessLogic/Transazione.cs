@@ -6,24 +6,54 @@ using System.Threading.Tasks;
 
 namespace Esercizi.net.BusinessLogic
 {
-
+    
     public abstract class Transazione : ITransazione
     {
-        private string _tipo;
-        public string Tipo
-        {
-            get
-            {
-                return _tipo;
-            }
-            set
-            {
-                if (value == "Spesa" || value == "Ricavo")
-                {
-                    _tipo = value;
-                }
-            }
-        }
+
+        //cambio il tipo, dopo enum diventa Tipotransazione, non più stringa
+
+
+        //COME ERA prima di enum:
+
+        //private string _tipo;
+        //public string Tipo
+        //{
+        //    get
+        //    {
+        //        return _tipo;
+        //    }
+        //    set
+        //    {
+        //        if (value == "Spesa" || value == "Ricavo")
+        //        {
+        //            _tipo = value;
+        //        }
+        //    }
+        //}
+
+        //DOPO enum:
+
+        //private TipoTransazione _tipo;
+        //public TipoTransazione Tipo
+
+        //{
+        //    get
+        //    {
+        //        return _tipo;
+        //    }
+        //    set
+        //    {
+        //        if (value == "Spesa" || value == "Ricavo")
+        //        {
+        //            _tipo = value;
+        //        }
+        //    }
+        //}
+
+        //MA POSSO ULTERIORMENTE CONDENSARE:
+        //inoltre non ho più bisogno di estendere get e set perchè ho già dato condizioni su Tipotransazione dicendo che deve essere o spesa o ricavo
+
+        public TipoTransazione Tipo { get; set; }
 
         public DateTime DataTransazione { get; set; }
 
@@ -37,6 +67,7 @@ namespace Esercizi.net.BusinessLogic
         {
             string result = string.Empty;
             result += "Data transazione: " + DataTransazione + ",\n";
+            result += "Tipo transazione:" + Tipo + "\n";
             result += "Categoria: " + Categoria + ",\n";
             result += "Descrizione: " + Descrizione + ",\n";
             result += "Importo: " + Importo + ".\n";
